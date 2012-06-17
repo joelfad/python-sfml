@@ -1270,11 +1270,6 @@ cdef class Transformable:
 		def __set__(self, origin):
 			self.p_this.setOrigin(vector2_to_vector2f(origin))
 		
-	def move(self, offset):
-		self.p_this.move(vector2_to_vector2f(offset))
-		
-	def rotate(self, float angle):
-		self.p_this.rotate(angle)
 
 	property transform:
 		def __get__(self):
@@ -1324,11 +1319,6 @@ cdef class TransformableDrawable(Drawable):
 		def __set__(self, origin):
 			self.p_transformable.setOrigin(vector2_to_vector2f(origin))
 		
-	def move(self, offset):
-		self.p_transformable.move(vector2_to_vector2f(offset))
-		
-	def rotate(self, float angle):
-		self.p_transformable.rotate(angle)
 		
 	property transform:
 		def __get__(self):
@@ -1756,14 +1746,6 @@ cdef class View:
 		self.p_this.reset(rectangle_to_floatrect(rectangle))
 		self._update_target()
 	
-	def move(self, offset):
-		self.p_this.move(vector2_to_vector2f(offset))
-		self._update_target()
-
-	def rotate(self, float angle):
-		self.p_this.rotate(angle)
-		self._update_target()
-
 	def zoom(self, float factor):
 		self.p_this.zoom(factor)
 		self._update_target()
