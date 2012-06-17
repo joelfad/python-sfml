@@ -1256,7 +1256,7 @@ cdef class Transformable:
 		def __set__(self, float angle):
 			self.p_this.setRotation(angle)
 		
-	property ratio:
+	property scale:
 		def __get__(self):
 			return Vector2(self.p_this.getScale().x, self.p_this.getScale().y)
 			
@@ -1276,9 +1276,6 @@ cdef class Transformable:
 	def rotate(self, float angle):
 		self.p_this.rotate(angle)
 
-	def scale(self, factor):
-		self.p_this.scale(vector2_to_vector2f(factor))
-				
 	property transform:
 		def __get__(self):
 			cdef dgraphics.Transform *p = new dgraphics.Transform()
@@ -1313,7 +1310,7 @@ cdef class TransformableDrawable(Drawable):
 		def __set__(self, float angle):
 			self.p_transformable.setRotation(angle)
 		
-	property ratio:
+	property scale:
 		def __get__(self):
 			return Vector2(self.p_transformable.getScale().x, self.p_transformable.getScale().y)
 			
@@ -1332,9 +1329,6 @@ cdef class TransformableDrawable(Drawable):
 		
 	def rotate(self, float angle):
 		self.p_transformable.rotate(angle)
-		
-	def scale(self, factor):
-		self.p_transformable.scale(vector2_to_vector2f(factor))
 		
 	property transform:
 		def __get__(self):
