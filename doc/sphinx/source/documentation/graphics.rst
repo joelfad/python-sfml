@@ -1516,9 +1516,7 @@ Transformable
          
       Set/get the position of the object
 
-      This attribute completely overwrites the previous position. See 
-      :func:`move` to apply an offset based on the previous position 
-      instead. The default position of a transformable object is (0, 0).
+      The default position of a transformable object is (0, 0).
 
       :rtype: :class:`sfml.system.Vector2`
       
@@ -1526,19 +1524,15 @@ Transformable
    
       Set/get the orientation of the object
 
-      This attribute completely overwrites the previous rotation. See 
-      :func:`rotate` to add an angle based on the previous rotation 
-      instead. The default rotation of a transformable object is 0.
+      The default rotation of a transformable object is 0.
 
       :rtype: float
       
-   .. py:attribute:: ratio
+   .. py:attribute::scale 
    
       Set/get the scale factors of the object
 
-      This function completely overwrites the previous ratio. See 
-      :func:`scale` to add a factor based on the previous scale 
-      instead. The default scale of a transformable object is (1, 1).
+      The default scale of a transformable object is (1, 1).
    
       :rtype: :class:`sfml.system.Vector2`
       
@@ -2363,7 +2357,7 @@ View
       view.reset(sfml.graphics.Rectangle((100, 100), (400, 200)))
 
       # rotate it by 45 degrees
-      view.rotate(45)
+      view.rotation += 45
 
       # set its target viewport to be half of the window
       view.viewport = sfml.graphics.Rectangle((0, 0), (0.5, 1))
@@ -2533,8 +2527,8 @@ RenderTarget
    
       Get the viewport of a view, applied to this render target.
 
-      The viewport is defined in the view as a ratio, this function 
-      simply applies this ratio to the current dimensions of the render 
+      The viewport is defined in the view as a scale, this function 
+      simply applies this scale to the current dimensions of the render 
       target to calculate the pixels rectangle that the viewport 
       actually covers in the target.
       
