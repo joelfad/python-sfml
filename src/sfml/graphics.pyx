@@ -8,7 +8,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from warnings import warn
+from warning import warn
 
 cimport cython
 from cython.operator cimport dereference as deref
@@ -1270,7 +1270,6 @@ cdef class Transformable:
 		def __set__(self, origin):
 			self.p_this.setOrigin(vector2_to_vector2f(origin))
 		
-
 	property transform:
 		def __get__(self):
 			cdef dgraphics.Transform *p = new dgraphics.Transform()
@@ -1282,6 +1281,15 @@ cdef class Transformable:
 			cdef dgraphics.Transform *p = new dgraphics.Transform()
 			p[0] = self.p_this.getInverseTransform()
 			return wrap_transform(p)
+
+	def move(self, offset):
+		warn('Please use position instead: position += offset'
+		self.postition += offset
+
+	def rotate(self, float angle):
+		warn('Please use rotation instead: rotation += angle'
+			 DeprecationWarning)
+		self.rotation += angle
 
 
 cdef class TransformableDrawable(Drawable):
