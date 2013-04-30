@@ -59,7 +59,7 @@ cdef extern from "SFML/System.hpp" namespace "sf":
 
 	cdef cppclass Clock:
 		Clock()
-		Time getElapsedTime()
+		Time getElapsedTime() const
 		Time restart()
 
 	cdef Time seconds(float)
@@ -123,7 +123,6 @@ cdef extern from "SFML/System.hpp" namespace "sf":
 		T x
 		T y
 		T z
-
 
 cimport style, event, videomode, keyboard, joystick, mouse
 
@@ -467,21 +466,21 @@ cdef extern from "SFML/Graphics.hpp" namespace "sf":
 
 	cdef cppclass Shape:
 		Shape()
-		void setTexture(Texture*)
-		void setTexture(Texture*, bint)
-		void setTextureRect(IntRect&)
-		void setFillColor(Color&)
-		void setOutlineColor(Color&)
+		void setTexture(const Texture*)
+		void setTexture(const Texture*, bint)
+		void setTextureRect(const IntRect&)
+		void setFillColor(const Color&)
+		void setOutlineColor(const Color&)
 		void setOutlineThickness(float)
-		Texture* getTexture()
-		IntRect& getTextureRect()
-		Color& getFillColor()
-		Color& getOutlineColor()
-		float getOutlineThickness()
-		FloatRect getLocalBounds()
-		FloatRect getGlobalBounds()
-		unsigned int getPointCount()
-		Vector2f getPoint(unsigned int)
+		const Texture* getTexture() const
+		const IntRect& getTextureRect() const
+		const Color& getFillColor() const
+		const Color& getOutlineColor() const
+		float getOutlineThickness() const
+		FloatRect getLocalBounds() const
+		FloatRect getGlobalBounds() const
+		unsigned int getPointCount() const
+		Vector2f getPoint(unsigned int) const
 
 	cdef cppclass CircleShape:
 		CircleShape()
@@ -530,25 +529,25 @@ cdef extern from "SFML/Graphics.hpp" namespace "sf":
 
 	cdef cppclass View:
 		View()
-		View(FloatRect&)
-		View(Vector2f&, Vector2f&)
+		View(const FloatRect&)
+		View(const Vector2f&, const Vector2f&)
 		void setCenter(float, float)
-		void setCenter(Vector2f&)
+		void setCenter(const Vector2f&)
 		void setSize(float, float)
-		void setSize(Vector2f&)
+		void setSize(const Vector2f&)
 		void setRotation(float)
-		void setViewport(FloatRect&)
-		void reset(FloatRect&)
-		Vector2f& getCenter()
-		Vector2f& getSize()
+		void setViewport(const FloatRect&)
+		void reset(const FloatRect&)
+		const Vector2f& getCenter()
+		const Vector2f& getSize()
 		float getRotation()
-		FloatRect& getViewport()
+		const FloatRect& getViewport()
 		void move(float, float)
-		void move(Vector2f&)
+		void move(const Vector2f&)
 		void rotate(float)
 		void zoom(float)
-		Transform& getTransform()
-		Transform& getInverseTransform()
+		const Transform& getTransform()
+		const Transform& getInverseTransform()
 
 	cdef cppclass RenderTarget:
 		void clear()
