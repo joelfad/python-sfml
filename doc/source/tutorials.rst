@@ -330,3 +330,7 @@ Officials tutorials
    tutorials/threads
    tutorials/handling_time
    tutorials/user_data_streams
+
+   tutorials/opening_and_managing_a_sfml_window
+
+
