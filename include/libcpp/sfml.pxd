@@ -70,6 +70,8 @@ cdef extern from "SFML/System.hpp" namespace "sf":
 		String(char*)
 		string toAnsiString()
 
+	cdef cppclass InputStream
+
 	cdef cppclass Vector2i:
 		Vector2i()
 		Vector2i(int, int)
@@ -325,6 +327,7 @@ cdef extern from "SFML/Graphics.hpp" namespace "sf":
 		void create(unsigned int, unsigned int, Color)
 		bint loadFromFile(char*&)
 		bint loadFromMemory(void*, size_t)
+		bint loadFromStream(InputStream&)
 		bint saveToFile(char*&)
 		Vector2u getSize()
 		void createMaskFromColor(Color&)
