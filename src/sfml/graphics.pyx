@@ -1827,7 +1827,7 @@ cdef class RenderWindow(Window):
 	cdef sf.RenderWindow *p_this
 
 	def __init__(self, VideoMode mode, title, Uint32 style=sf.style.Default, ContextSettings settings=None):
-		if self.__class__ is not RenderWindow:
+		if not isinstance(self, RenderWindow):
 			if not settings: self.p_this = <sf.RenderWindow*>new DerivableRenderWindow(mode.p_this[0], toEncodedString(title), style)
 			else: self.p_this = <sf.RenderWindow*>new DerivableRenderWindow(mode.p_this[0], toEncodedString(title), style, settings.p_this[0])
 		else:
