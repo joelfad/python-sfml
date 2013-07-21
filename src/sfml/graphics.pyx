@@ -1947,6 +1947,9 @@ cdef class RenderTexture(RenderTarget):
 	def display(self):
 		self.p_this.display()
 
+	def create(self, unsigned int width, unsigned int height, bint depthBuffer=False):
+		self.p_this.create(width, height, depthBuffer)
+
 	property texture:
 		def __get__(self):
 			return self.m_texture
