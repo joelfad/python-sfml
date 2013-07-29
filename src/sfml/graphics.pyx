@@ -1887,6 +1887,8 @@ cdef class RenderWindow(Window):
 	property size:
 		def __get__(self):
 			return Vector2(self.p_this.getSize().x, self.p_this.getSize().y)
+		def __set__(self, vector):
+			self.p_window.setSize(sf.Vector2u(vector.x, vector.y))
 
 	property width:
 		def __get__(self):
