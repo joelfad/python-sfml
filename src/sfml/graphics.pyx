@@ -1974,6 +1974,12 @@ cdef class HandledWindow(RenderTarget):
 
 	def display(self):
 		self.p_window.display()
+	
+	property size:
+		def __get__(self):
+			return Vector2(self.p_window.getSize().x, self.p_window.getSize().y)
+		def __set__(self, vector):
+			self.p_window.setSize(sf.Vector2u(vector.x, vector.y))
 
 def show(image):
 	mutex = Mutex()
