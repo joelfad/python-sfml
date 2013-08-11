@@ -26,7 +26,6 @@ cimport libcpp.sfml as sf
 from libcpp.sfml cimport Int8, Int16, Int32, Int64
 from libcpp.sfml cimport Uint8, Uint16, Uint32, Uint64
 
-
 cdef extern from "pysfml/system_api.h":
 	object popLastErrorMessage()
 	int import_sfml__system()
@@ -97,7 +96,7 @@ from copy import copy, deepcopy
 
 from pysfml.system cimport Vector2, Vector3
 from pysfml.system cimport to_vector2i, to_vector2f
-from pysfml.window cimport VideoMode, ContextSettings, Pixels, Window
+from pysfml.window cimport VideoMode, ContextSettings, Pixels, Window, Event
 from pysfml.graphics cimport to_intrect, to_floatrect
 from pysfml.graphics cimport intrect_to_rectangle, floatrect_to_rectangle
 
@@ -1974,6 +1973,12 @@ cdef class HandledWindow(RenderTarget):
 
 	def display(self):
 		self.p_window.display()
+
+	def empty_event_loop(self):
+		cdef sf.Event *p = new sf.Event()
+		while self.p_window.pollEvent(p[0]):
+			pass
+		del p
 	
 	property size:
 		def __get__(self):
