@@ -1913,7 +1913,7 @@ cdef class RenderWindow(Window):
 
 	def __init__(self, VideoMode mode, title, Uint32 style=sf.style.Default, ContextSettings settings=None):
 		if self.p_this == NULL:
-			if self.__class__ is not RenderWindow:
+			if not isinstance(self, RenderWindow):
 				if not settings: self.p_this = <sf.RenderWindow*>new DerivableRenderWindow(mode.p_this[0], toEncodedString(title), style)
 				else: self.p_this = <sf.RenderWindow*>new DerivableRenderWindow(mode.p_this[0], toEncodedString(title), style, settings.p_this[0])
 			else:
@@ -2024,6 +2024,9 @@ cdef class RenderTexture(RenderTarget):
 
 	def __repr__(self):
 		return "RenderTexture(size={0}, smooth={1}, repeated={2})".format(self.size, self.smooth, self.repeated)
+
+	def create(self, unsigned int width, unsigned int height, bint depthBuffer=False):
+		self.p_this.create(width, height, depthBuffer)
 
 	property smooth:
 		def __get__(self):

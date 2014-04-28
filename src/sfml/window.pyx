@@ -648,9 +648,6 @@ cdef public class Pixels[type PyPixelsType, object PyPixelsObject]:
 	cdef unsigned int	 m_width
 	cdef unsigned int	 m_height
 
-	def __init__(self):
-		raise UserWarning("This class is not meant to be used directly")
-
 	def __repr__(self):
 		return "Pixels(width={0}, height={1})".format(self.width, self.height)
 
