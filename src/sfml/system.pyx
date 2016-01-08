@@ -94,8 +94,8 @@ cdef public class Vector2[type PyVector2Type, object PyVector2Object]:
         del self.p_this
 
     def __init__(self, x=0, y=0):
-        self.x = float(x)
-        self.y = float(y)
+        self.x = x
+        self.y = y
 
     def __repr__(self):
         return "Vector2(x={0}, y={1})".format(self.x, self.y)
@@ -161,8 +161,8 @@ cdef public class Vector2[type PyVector2Type, object PyVector2Object]:
     def __truediv__(Vector2 self, other):
         v = Vector2(self.x, self.y)
         if isinstance(other, Vector2):
-            v.x /= other.x
-            v.y /= other.y
+            v.x /= float(other.x)
+            v.y /= float(other.y)
         else:
             v.x /= other
             v.y /= other
@@ -202,8 +202,8 @@ cdef public class Vector2[type PyVector2Type, object PyVector2Object]:
     # reimplemented the logic in Python (I have to report this bug)
     def __itruediv__(Vector2 self, other):
         if isinstance(other, Vector2):
-            self.x /= other.x
-            self.y /= other.y
+            self.x /= float(other.x)
+            self.y /= float(other.y)
         else:
             self.x /= other
             self.y /= other
@@ -224,14 +224,14 @@ cdef public class Vector2[type PyVector2Type, object PyVector2Object]:
             return self.p_this.x.get()
 
         def __set__(self, object x):
-            self.p_this.x.set(float(x))
+            self.p_this.x.set(x)
 
     property y:
         def __get__(self):
             return self.p_this.y.get()
 
         def __set__(self, object y):
-            self.p_this.y.set(float(y))
+            self.p_this.y.set(y)
 
 cdef api Vector2 wrap_vector2(sf.Vector2[NumericObject]* p):
     cdef Vector2 r = Vector2.__new__(Vector2)
