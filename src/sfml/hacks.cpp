@@ -17,10 +17,10 @@ float Time_div_Time(sf::Time left, sf::Time right)
 
 void Time_idiv_int(sf::Time& left, sf::Int64 right)
 {
-	left / right;
+	left /= right;
 }
 
 void Time_idiv_float(sf::Time& left, float right)
 {
-	left / right;
+	left /= right;
 }
